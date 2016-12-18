@@ -99,37 +99,27 @@ def main():
     vocabulary = get_vocabulary(train_data_essays)
     table = bag_of_words(train_data_essays, len(vocabulary), vocabulary)
     print train_score_dict
-
     f.close()
-
 
     f = open("test_set.tsv")
     lines = list(f)
     test_data_essays = get_test_data(lines)
-    # print test_data_essays[0]
     f.close()
-
-
-    #count_vect = CountVectorizer(min_df=1)
-    #X_train_counts = count_vect.fit_transform(train_data_essays)
-    #print(X_train_counts.shape)
-    #import pdb; pdb.set_trace()
 
     tfidf_transformer = TfidfTransformer(use_idf=False).fit(table)
     X_train_tf = tfidf_transformer.transform(table)
     logreg = linear_model.LogisticRegression()
     logreg.fit(X_train_tf, train_data_scores)
-    #print(X_train_tf.shape)
+
     best_model = linear_model.LogisticRegression(tol=.000001)
 
     docs_new = test_data_essays
     
-    #test_vocabulary = get_vocabulary(test_data_essays)
+    # testing on training data to check for accuracy
     table_test = bag_of_words(test_data_essays, len(vocabulary), vocabulary)
-    X_new_tfidf = tfidf_transformer.transform(table_test)
-    # print count_vect.vocabulary_
+    X_new_tfidf = tfidf_transformer.transform(table)
 
-    predictions = logreg.predict(table_test)
+    predictions = logreg.predict(X_train_tf)
     gradeCounts = defaultdict(int)
     for grade in predictions:
         gradeCounts[grade] += 1
