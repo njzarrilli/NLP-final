@@ -4,7 +4,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from collections import defaultdict
-
+import numpy as np
+import string
 
 rubric = { '1': 12, '3': 3, '4': 3, '5': 4, '6':4, '7': 30, '8':60 }
 
@@ -23,6 +24,8 @@ def get_training_data(lines):
         line_data[2] = line_data[2].decode('unicode_escape').encode('ascii','ignore')
         
         essay = line_data[2].encode('utf-8')
+        essay = essay.translate(None, string.punctuation)
+        essay = essay.lower()
         essay_score = line_data[5]
         
         essay_set = line_data[1].encode('utf-8')
@@ -54,29 +57,51 @@ def get_test_data(lines):
         line_data = re.split(r'\t+', line)
         line_data[2] = line_data[2].decode('unicode_escape').encode('ascii','ignore')
         essay = line_data[2].encode('utf-8')
+        essay = essay.translate(None, string.punctuation)
+        essay = essay.lower()
         test_data_lines.append(essay)
     
     return (test_data_lines)
 
-# def bag_of_words(data):
-#     # wordToId = dict()
-#     # idToOccur = dict()
-#     table = defaultdict(int)
+def get_vocabulary(data):
+    vocabulary = set()
+
+    for essay in data:
+        for word in essay.split():
+            vocabulary.add(word)
+            # ignore punctuation
+    return vocabulary
+
+# add in unknown token as a word
+def bag_of_words(data, vocab_size, vocabulary):
+    table = np.zeros((len(data), vocab_size))
+    vocabulary_list = list(vocabulary)
+    vocabulary_index_dict = dict()
+    for k in range(len(vocabulary_list)):
+        word = vocabulary_list[k]
+        vocabulary_index_dict[word] = k
+
+    for i in range(len(data)):
+        # do this in preprocessing
+        for word in data[i].split():
+            try:
+                index = vocabulary_index_dict[word.lower()]
+                table[i][index] += 1
+            except KeyError:
+                pass
     
-#     for essay in data:
-#         for word in essay:
-#             table[(essay, word)] += 1
-#     return table
+    return table
 
 def main():
     f = open("training_set_rel3.tsv")
     lines = list(f)
     train_data_essays, train_data_scores, train_score_dict = get_training_data(lines)
-    # print train_score_dict
-    
-    # return 
-    # print(train_data_essays[0])
+    vocabulary = get_vocabulary(train_data_essays)
+    table = bag_of_words(train_data_essays, len(vocabulary), vocabulary)
+    print train_score_dict
+
     f.close()
+
 
     f = open("test_set.tsv")
     lines = list(f)
@@ -85,31 +110,29 @@ def main():
     f.close()
 
 
+    #count_vect = CountVectorizer(min_df=1)
+    #X_train_counts = count_vect.fit_transform(train_data_essays)
+    #print(X_train_counts.shape)
+    #import pdb; pdb.set_trace()
 
-    count_vect = CountVectorizer(min_df=1, ngram_range=(1,3))
-    X_train_counts = count_vect.fit_transform(train_data_essays)
-    print(X_train_counts.shape)
-
-    tfidf_transformer = TfidfTransformer(use_idf=False).fit(X_train_counts)
-    X_train_tf = tfidf_transformer.transform(X_train_counts)
-    print(X_train_tf.shape)
-
+    tfidf_transformer = TfidfTransformer(use_idf=False).fit(table)
+    X_train_tf = tfidf_transformer.transform(table)
+    logreg = linear_model.LogisticRegression()
+    logreg.fit(X_train_tf, train_data_scores)
+    #print(X_train_tf.shape)
     best_model = linear_model.LogisticRegression(tol=.000001)
 
     docs_new = test_data_essays
-    X_new_counts = count_vect.transform(docs_new)
-    X_new_tfidf = tfidf_transformer.transform(X_train_counts)
-    #traing model on train data and test it on the held out data set
-    best_model = train_model(train_data_essays, train_data_scores)
+    
+    #test_vocabulary = get_vocabulary(test_data_essays)
+    table_test = bag_of_words(test_data_essays, len(vocabulary), vocabulary)
+    X_new_tfidf = tfidf_transformer.transform(table_test)
     # print count_vect.vocabulary_
 
-    clf = MultinomialNB().fit(X_train_tf, train_data_scores)
-
+    predictions = logreg.predict(table_test)
     gradeCounts = defaultdict(int)
-    predicted = clf.predict(X_new_tfidf)
-    for doc, grade in zip(docs_new, predicted):
+    for grade in predictions:
         gradeCounts[grade] += 1
-        # print doc, grade
     print gradeCounts
 
 
