@@ -92,6 +92,31 @@ def bag_of_words(data, vocab_size, vocabulary):
     
     return table
 
+def log_accuracy(predictions, grades):
+    grade_accuracies = defaultdict(lambda: [0.0, 0.0])
+    total = 0
+    correct_predictions = 0
+    f = open("testing_accuracy_results.txt", "w+")
+    
+    gradeCounts = defaultdict(int)
+    for predicted_grade, correct_grade in zip(predictions, grades):
+        f.write("Got: %s    Expected: %s\n" % (predicted_grade, correct_grade))
+        total += 1
+        grade_accuracies[correct_grade][1] += 1
+        if predicted_grade == correct_grade:
+            correct_predictions += 1
+            grade_accuracies[correct_grade][0] +=1
+        gradeCounts[correct_grade] += 1
+    
+    accuracy = (float(correct_predictions)/total)*100
+    f.write("Accuracy: %s \n\n" % str(accuracy))
+    for grade in grade_accuracies:
+        f.write("For %s correctly predicted %s essay grades out of %s\n" % (grade, grade_accuracies[grade][0], grade_accuracies[grade][1]))
+    f.write("\n")
+    f.close()
+    print gradeCounts
+
+
 def main():
     f = open("training_set_rel3.tsv")
     lines = list(f)
@@ -117,13 +142,8 @@ def main():
     
     # testing on training data to check for accuracy
     table_test = bag_of_words(test_data_essays, len(vocabulary), vocabulary)
-    X_new_tfidf = tfidf_transformer.transform(table)
-
-    predictions = logreg.predict(X_train_tf)
-    gradeCounts = defaultdict(int)
-    for grade in predictions:
-        gradeCounts[grade] += 1
-    print gradeCounts
-
+    X_new_tfidf = tfidf_transformer.transform(table_test)
+    predictions = logreg.predict(X_new_tfidf)
+    log_accuracy(predictions, train_data_scores)
 
 main()
