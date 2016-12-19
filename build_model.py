@@ -3,6 +3,7 @@ from sklearn import linear_model
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 import numpy as np
 import string
@@ -96,7 +97,7 @@ def log_accuracy(predictions, grades):
     grade_accuracies = defaultdict(lambda: [0.0, 0.0])
     total = 0
     correct_predictions = 0
-    f = open("testing_accuracy_results.txt", "w+")
+    f = open("testing_accuracy_cos.txt", "w+")
     
     gradeCounts = defaultdict(int)
     for predicted_grade, correct_grade in zip(predictions, grades):
@@ -116,34 +117,38 @@ def log_accuracy(predictions, grades):
     f.close()
     print gradeCounts
 
+def cosine_similarities(data_matrix, compare_matrix):
+    cosine_sim_matrix = cosine_similarity(data_matrix, compare_matrix)
+    print(cosine_sim_matrix.shape)
+    final_matrix = np.concatenate((data_matrix.toarray(), cosine_sim_matrix), axis=1)
+    print(final_matrix.shape)
+    return final_matrix
 
 def main():
     f = open("training_set_rel3.tsv")
     lines = list(f)
-    train_data_essays, train_data_scores, train_score_dict = get_training_data(lines)
+    essays, scores, train_score_dict = get_training_data(lines)
+    train_data_essays, train_data_scores = essays[:10178], scores[:10178]
+    test_data_essays, test_data_scores = essays[10178:], scores[10178:]
+    print train_score_dict
+
+    # training
     vocabulary = get_vocabulary(train_data_essays)
     table = bag_of_words(train_data_essays, len(vocabulary), vocabulary)
-    print train_score_dict
-    f.close()
-
-    f = open("test_set.tsv")
-    lines = list(f)
-    test_data_essays = get_test_data(lines)
-    f.close()
-
     tfidf_transformer = TfidfTransformer(use_idf=False).fit(table)
     X_train_tf = tfidf_transformer.transform(table)
+    cos_sim_matrix = cosine_similarities(X_train_tf, X_train_tf)
     logreg = linear_model.LogisticRegression()
-    logreg.fit(X_train_tf, train_data_scores)
+    print("about to fit logreg model")
+    logreg.fit(cos_sim_matrix, train_data_scores)
+    print("finished training")
 
-    best_model = linear_model.LogisticRegression(tol=.000001)
-
-    docs_new = test_data_essays
-    
     # testing on training data to check for accuracy
     table_test = bag_of_words(test_data_essays, len(vocabulary), vocabulary)
     X_new_tfidf = tfidf_transformer.transform(table_test)
-    predictions = logreg.predict(X_new_tfidf)
-    log_accuracy(predictions, train_data_scores)
+    cos_sim_matrix_test = cosine_similarities(X_new_tfidf, X_train_tf)
+    print("about to predict")
+    predictions = logreg.predict(cos_sim_matrix_test)
+    log_accuracy(predictions, test_data_scores)
 
 main()
