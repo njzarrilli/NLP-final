@@ -7,6 +7,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 import numpy as np
 import string
+from nltk.tag.stanford import StanfordPOSTagger
+from nltk.internals import find_jars_within_path
+
+jar = '/Users/AlexanderRavan/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
+model = '/Users/AlexanderRavan/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
+tagger = StanfordPOSTagger(model, jar)
+
 
 rubric = { '1': 12, '3': 3, '4': 3, '5': 4, '6':4, '7': 30, '8':60 }
 UNKNOWN_TOKEN = "<UNK>"
@@ -210,6 +217,35 @@ def cosine_similarities(data_matrix, compare_matrix):
     final_matrix = np.concatenate((data_matrix.toarray(), cosine_sim_matrix), axis=1)
     print(final_matrix.shape)
     return final_matrix
+
+def get_pos_tags():
+    tags = []
+    t = open('tags.txt', 'r')
+    t_lines = list(t)
+    for line in t_lines:
+        line_data = re.split(r'\n+', line)
+        tags.append(line_data[0])
+    return tags 
+
+def POS_tag_feature(text):
+    return tagger.tag(text.split())
+
+def POS_chunk_feature(text):
+    pos_window = []
+    for word in range(2, len(text[2:])):
+        chunk = {}
+        chunk['word-2'] = text[word - 2][0]
+        chunk['pos-2']  = text[word-2][1]
+        chunk['word-1']  = text[word-1][0]
+        chunk['pos-1']  = text[word-1][1]
+        chunk['word+1']  = text[word+1][0]
+        chunk['pos+1']  = text[word+1][1]
+        chunk['word+2']  = text[word+2][0]
+        chunk['pos+2']  = text[word+2][1]
+
+        pos_window.append(chunk)
+
+    return pos_window
 
 def main():
     f = open("training_set_rel3.tsv")
