@@ -17,6 +17,10 @@ from nltk import word_tokenize
 
 
 rubric = { '1': 12, '3': 3, '4': 3, '5': 4, '6':4, '7': 30, '8':60 }
+entities = {"organization": '<ORG>', 'location' : '<LOC>', 'caps':'<CAPS>', 
+            'num': '<NUM>', 'percent': '<PERCENT>', 'person': '<PERS>', 
+            'month': '<MONTH>', 'date': '<DATE>', 'money': '<MONEY>' }
+
 UNKNOWN_TOKEN = "<UNK>"
 # ORGANIZATION
 # LOCATION
@@ -44,6 +48,23 @@ def detect_unknowns(data, word_counts):
         data_with_unknowns.append(new_essay)
     
     return data_with_unknowns
+
+def NER(essay):
+    to_remove = []
+
+    for i in range(len(essay)):
+        try:
+            if essay[i] == "@":
+                entity = re.sub("\d+", "", essay[i+1])
+                # print essay[i], essay[i+1], entity
+                essay[i] = entities[entity]
+                to_remove.append(essay[i+1])
+        except KeyError:
+            pass
+    for i in to_remove:
+        essay.remove(i)
+    return essay
+            
 
 def letter_grade(essay_set, essay_score):
     essay_score_int = int(essay_score)
@@ -116,6 +137,7 @@ def get_training_data(lines):
         #essay = essay.translate(None, string.punctuation)
         essay = essay.lower()
         essay = word_tokenize(essay)
+        essay = NER(essay)
         essay_score = line_data[5]
         #essay = essay.split()
 
@@ -172,6 +194,23 @@ def bag_of_words(data, vocab_size, vocabulary):
         for word in data[i]:
             try:
                 index = vocabulary_index_dict[word.lower()]
+                table[i][index] += 1
+            except KeyError:
+                pass
+    return table
+
+def bag_of_NE(data):
+    table = np.zeros((len(data), len(entities)))
+    entities_index_dict = dict()
+    k=0
+    for entity in entities:
+        entities_index_dict[k] = entity
+        k += 1
+
+    for i in range(len(data)):
+        for word in data[i]:
+            try:
+                index = entities_index_dict[word.lower()]
                 table[i][index] += 1
             except KeyError:
                 pass
@@ -270,6 +309,7 @@ def POS_chunk_feature(text):
     return pos_window
 
 def main():
+
     f = open("training_set_rel3.tsv")
     lines = list(f)
     essays, scores, train_score_dict = get_training_data(lines)
@@ -287,8 +327,14 @@ def main():
     print("bow found")
     BOB_matrix = bag_of_bigrams(train_data_essays, len(bigram_vocabulary), bigram_vocabulary)
     print("bob found")
-    combined_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)
+    bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)
     print("concat")
+    NE_matrix = bag_of_NE(train_data_essays)
+    print("ne found")
+    import pdb; pdb.set_trace();
+
+    combined_matrix = np.concatenate((bags_matrix, NE_matrix), axis=1)
+    print('concat 2')
     tfidf_transformer = TfidfTransformer().fit(combined_matrix)
     print("tfidf found")
     X_train_tf = tfidf_transformer.transform(combined_matrix)
@@ -302,7 +348,11 @@ def main():
     # testing on training data to check for accuracy
     BOW_test_matrix = bag_of_words(test_data_essays, len(vocabulary), vocabulary)
     BOB_test_matrix = bag_of_bigrams(test_data_essays, len(bigram_vocabulary), bigram_vocabulary)
-    combined_test_matrix = np.concatenate((BOW_test_matrix, BOB_test_matrix), axis=1)
+    bag_test_matrix = np.concatenate((BOW_test_matrix, BOB_test_matrix), axis=1)
+    NE_test_matrix = bag_of_NE(train_data_essays)
+    print("ne found")
+    combined_test_matrix = np.concatenate((bags_test_matrix, NE_test_matrix), axis=1)
+    print('concat 2')
     X_new_tfidf = tfidf_transformer.transform(combined_test_matrix)
     #cos_sim_matrix_test = cosine_similarities(X_new_tfidf, X_new_tfidf)
     print("about to predict")
