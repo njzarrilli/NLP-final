@@ -11,6 +11,7 @@ import nltk
 from nltk.tag.stanford import StanfordPOSTagger
 from nltk.internals import find_jars_within_path
 from nltk import word_tokenize
+import random
 #jar = '/Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
 #model = 'Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
 #tagger = StanfordPOSTagger(model, jar)
@@ -127,8 +128,10 @@ def get_training_data(lines):
     train_result_lines = []
     gradeCounts = defaultdict(int)
     word_counts = defaultdict(int)
+    lines = lines[1:]
+    random.shuffle(lines)
 
-    for line in lines[1:]:
+    for line in lines:
 
         line_data = re.split(r'\t+', line)
         line_data[2] = line_data[2].decode('unicode_escape').encode('ascii','ignore')
@@ -251,7 +254,7 @@ def log_accuracy(predictions, grades):
     grade_accuracies = defaultdict(lambda: [0.0, 0.0])
     total = 0
     correct_predictions = 0
-    f = open("testing_accuracy_grades_tfidf_bob.txt", "w+")
+    f = open("testing_accuracy_grades_random.txt", "w+")
     
     gradeCounts = defaultdict(int)
     for predicted_grade, correct_grade in zip(predictions, grades):
@@ -308,6 +311,26 @@ def POS_chunk_feature(text):
 
     return pos_window
 
+def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
+    
+    BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
+    print("bow found")
+    #BOB_matrix = bag_of_bigrams(train_data_essays, len(bigram_vocabulary), bigram_vocabulary)
+    #print("bob found")
+    #bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)  
+    #print("concat")
+    NE_matrix = bag_of_NE(data)
+    print("ne found")
+    combined_matrix = np.concatenate((BOW_matrix, NE_matrix), axis=1)
+    print('concat 2')
+    if not tfidf_transformer:
+        tfidf_transformer = TfidfTransformer().fit(combined_matrix)
+        print("tfidf found")
+    X_train_tf = tfidf_transformer.transform(combined_matrix)
+    #cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
+    #print("cos found")
+    return (tfidf_transformer, X_train_tf)
+
 def main():
 
     f = open("training_set_rel3.tsv")
@@ -323,40 +346,16 @@ def main():
     vocabulary = get_vocabulary(train_data_essays)
     print("vocab found")
     bigram_vocabulary = get_bigram_vocab(train_data_essays)
-    BOW_matrix = bag_of_words(train_data_essays, len(vocabulary), vocabulary)
-    print("bow found")
-    BOB_matrix = bag_of_bigrams(train_data_essays, len(bigram_vocabulary), bigram_vocabulary)
-    print("bob found")
-    bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)
-    print("concat")
-    NE_matrix = bag_of_NE(train_data_essays)
-    print("ne found")
-    import pdb; pdb.set_trace();
-
-    combined_matrix = np.concatenate((bags_matrix, NE_matrix), axis=1)
-    print('concat 2')
-    tfidf_transformer = TfidfTransformer().fit(combined_matrix)
-    print("tfidf found")
-    X_train_tf = tfidf_transformer.transform(combined_matrix)
-    #cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
-    #print("cos found")
-    logreg = linear_model.LogisticRegression()
+    tfidf_transformer, train_matrix = features_matrix(train_data_essays, vocabulary, bigram_vocabulary)
+    logreg = linear_model.LogisticRegression(max_iter=1000)
     print("about to fit logreg model")
-    logreg.fit(X_train_tf, train_data_scores)
+    logreg.fit(train_matrix, train_data_scores)
     print("finished training")
     
     # testing on training data to check for accuracy
-    BOW_test_matrix = bag_of_words(test_data_essays, len(vocabulary), vocabulary)
-    BOB_test_matrix = bag_of_bigrams(test_data_essays, len(bigram_vocabulary), bigram_vocabulary)
-    bag_test_matrix = np.concatenate((BOW_test_matrix, BOB_test_matrix), axis=1)
-    NE_test_matrix = bag_of_NE(train_data_essays)
-    print("ne found")
-    combined_test_matrix = np.concatenate((bags_test_matrix, NE_test_matrix), axis=1)
-    print('concat 2')
-    X_new_tfidf = tfidf_transformer.transform(combined_test_matrix)
-    #cos_sim_matrix_test = cosine_similarities(X_new_tfidf, X_new_tfidf)
+    tfidf_transformer, test_matrix = features_matrix(test_data_essays, vocabulary, bigram_vocabulary, tfidf_transformer)
     print("about to predict")
-    predictions = logreg.predict(X_new_tfidf)
+    predictions = logreg.predict(test_matrix)
     log_accuracy(predictions, test_data_scores)
 
 main()
