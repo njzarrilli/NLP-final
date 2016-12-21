@@ -10,9 +10,9 @@ import string
 from nltk.tag.stanford import StanfordPOSTagger
 from nltk.internals import find_jars_within_path
 
-jar = '/Users/AlexanderRavan/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
-model = '/Users/AlexanderRavan/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
-tagger = StanfordPOSTagger(model, jar)
+#jar = '/Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
+#model = 'Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
+#tagger = StanfordPOSTagger(model, jar)
 
 
 rubric = { '1': 12, '3': 3, '4': 3, '5': 4, '6':4, '7': 30, '8':60 }
@@ -36,6 +36,8 @@ def detect_unknowns(data, word_counts):
     return data_with_unknowns
 
 def letter_grade(essay_set, essay_score):
+    essay_score_int = int(essay_score)
+
     if essay_set == '1':
         if essay_score == '5' or essay_score == '6':
             return 'A'
@@ -49,15 +51,13 @@ def letter_grade(essay_set, essay_score):
             return 'F'
     # might not be out of 4 might be 3
     elif essay_set == '3' or essay_set == '4':
-        if essay_score == '4':
+        if essay_score == '3':
             return 'A'
-        elif essay_score == '3':
-            return 'B'
         elif essay_score == '2':
-            return 'C'
+            return 'B'
         elif essay_score == '1':
             return 'D'
-        elif essay_score == '0':
+        else:
             return 'F'
     elif essay_set == '5' or essay_set == '6':
         if essay_score == '4':
@@ -68,18 +68,28 @@ def letter_grade(essay_set, essay_score):
             return 'C'
         elif essay_score == '1':
             return 'D'
-        elif essay_score == '0':
+        else:
             return 'F'
     elif essay_set == '7':
-        if essay_score == '3':
+        if essay_score_int >= 24:
             return 'A'
-        elif essay_score == '2':
+        elif essay_score_int >= 18:
             return 'B'
-        elif essay_score == '1':
+        elif essay_score_int >= 12:
             return 'D'
-        elif essay_score == '0':
+        else:
             return 'F'
     elif essay_set == '8':
+        if essay_score_int >= 50:
+            return 'A'
+        elif essay_score_int >= 40:
+            return 'B'
+        elif essay_score_int >= 30:
+            return 'C'
+        elif essay_score_int >= 20:
+            return 'D'
+        else:
+            return 'F'
 
 def get_training_data(lines):
     train_data_lines = []
@@ -190,7 +200,7 @@ def log_accuracy(predictions, grades):
     grade_accuracies = defaultdict(lambda: [0.0, 0.0])
     total = 0
     correct_predictions = 0
-    f = open("testing_accuracy_bob.txt", "w+")
+    f = open("testing_accuracy_grades_cosine.txt", "w+")
     
     gradeCounts = defaultdict(int)
     for predicted_grade, correct_grade in zip(predictions, grades):
@@ -212,6 +222,7 @@ def log_accuracy(predictions, grades):
     print gradeCounts
 
 def cosine_similarities(data_matrix, compare_matrix):
+    import pdb; pdb.set_trace()
     cosine_sim_matrix = cosine_similarity(data_matrix, compare_matrix)
     print(cosine_sim_matrix.shape)
     final_matrix = np.concatenate((data_matrix.toarray(), cosine_sim_matrix), axis=1)
@@ -269,10 +280,11 @@ def main():
     tfidf_transformer = TfidfTransformer().fit(combined_matrix)
     print("tfidf found")
     X_train_tf = tfidf_transformer.transform(combined_matrix)
-    #cos_sim_matrix = cosine_similarities(table, table)
+    cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
+    print("cos found")
     logreg = linear_model.LogisticRegression()
     print("about to fit logreg model")
-    logreg.fit(X_train_tf, train_data_scores)
+    logreg.fit(cos_sim_matrix, train_data_scores)
     print("finished training")
     
     # testing on training data to check for accuracy
@@ -280,9 +292,9 @@ def main():
     BOB_test_matrix = bag_of_bigrams(test_data_essays, len(bigram_vocabulary), bigram_vocabulary)
     combined_test_matrix = np.concatenate((BOW_test_matrix, BOB_test_matrix), axis=1)
     X_new_tfidf = tfidf_transformer.transform(combined_test_matrix)
-    #cos_sim_matrix_test = cosine_similarities(table_test, table)
+    cos_sim_matrix_test = cosine_similarities(X_new_tfidf, X_new_tfidf)
     print("about to predict")
-    predictions = logreg.predict(X_new_tfidf)
+    predictions = logreg.predict(cos_sim_matrix_test)
     log_accuracy(predictions, test_data_scores)
 
 main()
