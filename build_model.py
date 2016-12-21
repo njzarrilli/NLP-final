@@ -7,9 +7,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 import numpy as np
 import string
+import nltk
 from nltk.tag.stanford import StanfordPOSTagger
 from nltk.internals import find_jars_within_path
-
+from nltk import word_tokenize
 #jar = '/Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
 #model = 'Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
 #tagger = StanfordPOSTagger(model, jar)
@@ -17,6 +18,15 @@ from nltk.internals import find_jars_within_path
 
 rubric = { '1': 12, '3': 3, '4': 3, '5': 4, '6':4, '7': 30, '8':60 }
 UNKNOWN_TOKEN = "<UNK>"
+# ORGANIZATION
+# LOCATION
+# CAPS
+# NUM
+# PERCENT
+# PERSON
+# MONTH
+# DATE
+# MONEY
 
 def train_model(training_data, training_results):
     pass
@@ -103,10 +113,12 @@ def get_training_data(lines):
         line_data[2] = line_data[2].decode('unicode_escape').encode('ascii','ignore')
         
         essay = line_data[2].encode('utf-8')
-        essay = essay.translate(None, string.punctuation)
+        #essay = essay.translate(None, string.punctuation)
         essay = essay.lower()
+        essay = word_tokenize(essay)
         essay_score = line_data[5]
-        essay = essay.split()
+        #essay = essay.split()
+
         essay_set = line_data[1].encode('utf-8')
         
         if essay_set != '2':
@@ -200,7 +212,7 @@ def log_accuracy(predictions, grades):
     grade_accuracies = defaultdict(lambda: [0.0, 0.0])
     total = 0
     correct_predictions = 0
-    f = open("testing_accuracy_grades_cosine.txt", "w+")
+    f = open("testing_accuracy_grades_tfidf_bob.txt", "w+")
     
     gradeCounts = defaultdict(int)
     for predicted_grade, correct_grade in zip(predictions, grades):
@@ -222,7 +234,6 @@ def log_accuracy(predictions, grades):
     print gradeCounts
 
 def cosine_similarities(data_matrix, compare_matrix):
-    import pdb; pdb.set_trace()
     cosine_sim_matrix = cosine_similarity(data_matrix, compare_matrix)
     print(cosine_sim_matrix.shape)
     final_matrix = np.concatenate((data_matrix.toarray(), cosine_sim_matrix), axis=1)
@@ -264,6 +275,7 @@ def main():
     essays, scores, train_score_dict = get_training_data(lines)
     train_data_essays, train_data_scores = essays[:10178], scores[:10178]
     test_data_essays, test_data_scores = essays[10178:], scores[10178:]
+    print train_data_essays[0]
     print train_score_dict
     
     
@@ -280,11 +292,11 @@ def main():
     tfidf_transformer = TfidfTransformer().fit(combined_matrix)
     print("tfidf found")
     X_train_tf = tfidf_transformer.transform(combined_matrix)
-    cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
-    print("cos found")
+    #cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
+    #print("cos found")
     logreg = linear_model.LogisticRegression()
     print("about to fit logreg model")
-    logreg.fit(cos_sim_matrix, train_data_scores)
+    logreg.fit(X_train_tf, train_data_scores)
     print("finished training")
     
     # testing on training data to check for accuracy
@@ -292,9 +304,9 @@ def main():
     BOB_test_matrix = bag_of_bigrams(test_data_essays, len(bigram_vocabulary), bigram_vocabulary)
     combined_test_matrix = np.concatenate((BOW_test_matrix, BOB_test_matrix), axis=1)
     X_new_tfidf = tfidf_transformer.transform(combined_test_matrix)
-    cos_sim_matrix_test = cosine_similarities(X_new_tfidf, X_new_tfidf)
+    #cos_sim_matrix_test = cosine_similarities(X_new_tfidf, X_new_tfidf)
     print("about to predict")
-    predictions = logreg.predict(cos_sim_matrix_test)
+    predictions = logreg.predict(X_new_tfidf)
     log_accuracy(predictions, test_data_scores)
 
 main()
