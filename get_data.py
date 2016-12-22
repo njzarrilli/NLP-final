@@ -186,21 +186,23 @@ def main():
     essays, scores, train_score_dict = get_training_data(lines)
     essays_randomized, scores_randomized, essays_tagged_randomized = randomize(essays, scores, pos_lines)
     
-    print scores_randomized
+    # print scores_randomized
     
-    # print_to_file(essays_randomized, "essays_randomized.txt")
-    f_essay = open("essays_randomized.txt", 'w+')
-    for essay in essays_randomized:
-        f_essay.write(" ".join(essay))
-        f_essay.write('\n')
+    # f_essay = open("essays_randomized.txt", 'w+')
+    # for essay in essays_randomized:
+        # f_essay.write(" ".join(essay))
+        # f_essay.write('\n')
+        # f_essay.write(str(essay))
 
+    
+    print_to_file(essays_randomized, "essays_randomized.txt")
     print_to_file(scores_randomized, "scores_randomized.txt")
     
     f_tagged = open("essays_tagged_randomized.txt", 'w+')
     for line in essays_tagged_randomized:
-        f_essay.write(str(line))
+        f_tagged.write(str(line))
 
-    print_to_file(essays_tagged_randomized, "essays_tagged_randomized.txt")
+    # print_to_file(essays_tagged_randomized, "essays_tagged_randomized.txt")
 
 
 main()  

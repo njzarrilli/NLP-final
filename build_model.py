@@ -12,6 +12,8 @@ from nltk.tag.stanford import StanfordPOSTagger
 from nltk.internals import find_jars_within_path
 from nltk import word_tokenize
 import random
+import ast
+
 #jar = '/Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
 #model = 'Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
 #tagger = StanfordPOSTagger(model, jar)
@@ -348,25 +350,6 @@ def get_pos_tags():
         tags.append(line_data[0])
     return tags 
 
-def POS_tag_feature(text):
-    return tagger.tag(text.split())
-
-def POS_chunk_feature(text):
-    pos_window = []
-    for word in range(2, len(text[2:])):
-        chunk = {}
-        chunk['word-2'] = text[word - 2][0]
-        chunk['pos-2']  = text[word-2][1]
-        chunk['word-1']  = text[word-1][0]
-        chunk['pos-1']  = text[word-1][1]
-        chunk['word+1']  = text[word+1][0]
-        chunk['pos+1']  = text[word+1][1]
-        chunk['word+2']  = text[word+2][0]
-        chunk['pos+2']  = text[word+2][1]
-
-        pos_window.append(chunk)
-
-    return pos_window
 
 def essay_sizes(data):
     essay_lengths = []
@@ -378,7 +361,7 @@ def essay_sizes(data):
     return essay_lengths
 
 # def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
-def features_matrix(data, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer=None):
+def features_matrix(data, data_tagged, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer=None):
    
     #BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
     #print("bow found")
@@ -389,7 +372,13 @@ def features_matrix(data, vocabulary, bigram_vocabulary, tag_list, tfidf_transfo
     NE_matrix = bag_of_NE(data)
     print("ne found")
     combined_matrix = np.concatenate((BOB_matrix, NE_matrix), axis=1)
-    print('concat 2')
+    print('concat 1')
+
+    # POS_matrix = bag_of_pos(data_tagged, len(tag_list), tag_list)
+    # print("POS found")
+    # combined_matrix = np.concatenate((combined_matrix, POS_matrix), axis=1)
+    # print('concat 2')
+    
     if not tfidf_transformer:
         tfidf_transformer = TfidfTransformer().fit(combined_matrix)
         print("tfidf found")
@@ -403,9 +392,15 @@ def features_matrix(data, vocabulary, bigram_vocabulary, tag_list, tfidf_transfo
 
 def main():
 
+    # tagged = ast.literal_eval(essay[1])
+
+
     f = open("essays_randomized.txt")
     lines = list(f)
-    essays_tokenize = [word_tokenize(essay) for essay in lines]
+    essays_tokenize = [] 
+    # [ast.literal_eval(essay) for essay in lines]
+    for essay in lines:
+        essays_tokenize.append( ast.literal_eval(essay) )
     f.close()
     
     f = open("scores_randomized.txt")
@@ -414,25 +409,34 @@ def main():
 
     pos_file = open("essays_tagged_randomized.txt")
     pos_lines = list(pos_file)
+    essays_tagged = []
+    for essay in pos_lines:
+        # try: 
+        essays_tagged.append(eval(essay))
+        # except:
+            # print essay, '\n\n'
     pos_file.close()
-    print len(essays_tokenize), len(scores), len(pos_lines)
     
-    train_data_essays, train_data_scores = essays_tokenize[:10178], scores[:10178]
-    test_data_essays, test_data_scores = essays_tokenize[10178:], scores[10178:]
+    print len(essays_tokenize), len(scores), len(essays_tagged)
+    print essays_tokenize[1], essays_tagged[1]
+
+    train_data_essays, train_data_scores, train_data_tagged = essays_tokenize[:10178], scores[:10178], essays_tagged[:10178]
+    test_data_essays, test_data_scores, test_data_tagged = essays_tokenize[10178:], scores[10178:], essays_tagged[10178:]
     
-    tag_list = []
+    # tag_list = get_tag_list(train_data_tagged)
+    tag_list = get_pos_tags()
     # training
     vocabulary = get_vocabulary(train_data_essays)
     print("vocab found")
     bigram_vocabulary = get_bigram_vocab(train_data_essays)
-    tfidf_transformer, train_matrix = features_matrix(train_data_essays, vocabulary, bigram_vocabulary, tag_list)
+    tfidf_transformer, train_matrix = features_matrix(train_data_essays, train_data_tagged, vocabulary, bigram_vocabulary, tag_list)
     logreg = linear_model.LogisticRegression(max_iter=1000)
     print("about to fit logreg model")
     logreg.fit(train_matrix, train_data_scores)
     print("finished training")
     
     # testing on training data to check for accuracy
-    tfidf_transformer, test_matrix = features_matrix(test_data_essays, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer)
+    tfidf_transformer, test_matrix = features_matrix(test_data_essays, test_data_tagged, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer)
     print("about to predict")
     predictions = logreg.predict(test_matrix)
     log_accuracy(predictions, test_data_scores)
