@@ -405,6 +405,7 @@ def main():
     
     f = open("scores_randomized.txt")
     scores = list(f)
+    scores = [s.strip('\n') for s in scores]
     f.close()
 
     pos_file = open("essays_tagged_randomized.txt")
