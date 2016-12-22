@@ -403,17 +403,22 @@ def features_matrix(data, vocabulary, bigram_vocabulary, tag_list, tfidf_transfo
 
 def main():
 
-    f = open("training_set_rel3.tsv")
+    f = open("essays_randomized.txt")
     lines = list(f)
+    essays_tokenize = [word_tokenize(essay) for essay in lines]
+    f.close()
+    
+    f = open("scores_randomized.txt")
+    scores = list(f)
+    f.close()
 
-    pos_file = open("all_data_tagged.txt")
+    pos_file = open("essays_tagged_randomized.txt")
     pos_lines = list(pos_file)
-
-    essays, scores, train_score_dict = get_training_data(lines)
-    train_data_essays, train_data_scores = essays[:10178], scores[:10178]
-    test_data_essays, test_data_scores = essays[10178:], scores[10178:]
-    print train_data_essays[0]
-    print train_score_dict
+    pos_file.close()
+    print len(essays_tokenize), len(scores), len(pos_lines)
+    
+    train_data_essays, train_data_scores = essays_tokenize[:10178], scores[:10178]
+    test_data_essays, test_data_scores = essays_tokenize[10178:], scores[10178:]
     
     tag_list = []
     # training
