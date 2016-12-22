@@ -66,6 +66,34 @@ def NER(essay):
         essay.remove(i)
     return essay
             
+def randomize(essays, scores, POSfile):
+    print 'start randomize'
+    # print "Len essays", len(essays)
+    # print "Len scores", len(scores)
+    # print "Len pos", len(POSfile)
+
+    essays_unt = []
+    scores_unt = []
+    essays_tagged = []
+    combined = list(zip(essays, POSfile, scores))
+    i = 0 
+  
+    random.shuffle(combined)
+    # for essay in combined:
+        # i += 1
+        # tagged = ast.literal_eval(essay[1])
+        # try: 
+            # if essay[0][0] != tagged[0][0]:
+                # print essay[0][0], tagged[0][0]
+                # print "===============\n\n"
+                # print "fails at:", i
+            # if (i % 100) == 0:
+                # print i
+        # except:
+            # print essay
+            # print tagged
+    essays_unt[:], essays_tagged[:], scores_unt[:] = zip(*combined)
+    return (essays_unt, essays_tagged, scores_unt)
 
 def letter_grade(essay_set, essay_score):
     essay_score_int = int(essay_score)
@@ -202,6 +230,24 @@ def bag_of_words(data, vocab_size, vocabulary):
                 pass
     return table
 
+def bag_of_pos(tagged, num_tags, tags):
+    table = np.zeros((len(tagged), num_tags))
+    tag_list = list(tags)
+    tag_index_dict = dict()
+
+    for k in range(len(tag_list)):
+        tag = tag_list[k]
+        tag_index_dict[tag] = k
+
+    for i in range(len(data)):
+        for word in data[i]:
+            try:
+                index = tag_index_dict[word[1]]
+                table[o][index] += 1
+            except KeyError:
+                pass
+    return table
+
 def bag_of_NE(data):
     table = np.zeros((len(data), len(entities)))
     entities_index_dict = dict()
@@ -228,6 +274,17 @@ def get_bigram_vocab(data):
             bigram_vocab.add(bigram)
 
     return bigram_vocab
+
+def get_tag_list(tagged):
+    tag_list = set()
+
+    for essay in tagged:
+        essay = ast.literal_eval(essay)
+        for word in essay:
+            print word
+            tag_list.add(word[1])
+
+    return tag_list
 
 def bag_of_bigrams(data, bigram_vocab_size, bigram_vocabulary):
     table = np.zeros((len(data), bigram_vocab_size))
@@ -320,8 +377,9 @@ def essay_sizes(data):
     essay_lengths = np.reshape(essay_lengths, (len(data),1))
     return essay_lengths
 
-def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
-    
+# def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
+def features_matrix(data, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer=None):
+   
     #BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
     #print("bow found")
     BOB_matrix = bag_of_bigrams(data, len(bigram_vocabulary), bigram_vocabulary)
@@ -347,25 +405,29 @@ def main():
 
     f = open("training_set_rel3.tsv")
     lines = list(f)
+
+    pos_file = open("all_data_tagged.txt")
+    pos_lines = list(pos_file)
+
     essays, scores, train_score_dict = get_training_data(lines)
     train_data_essays, train_data_scores = essays[:10178], scores[:10178]
     test_data_essays, test_data_scores = essays[10178:], scores[10178:]
     print train_data_essays[0]
     print train_score_dict
     
-    
+    tag_list = []
     # training
     vocabulary = get_vocabulary(train_data_essays)
     print("vocab found")
     bigram_vocabulary = get_bigram_vocab(train_data_essays)
-    tfidf_transformer, train_matrix = features_matrix(train_data_essays, vocabulary, bigram_vocabulary)
+    tfidf_transformer, train_matrix = features_matrix(train_data_essays, vocabulary, bigram_vocabulary, tag_list)
     logreg = linear_model.LogisticRegression(max_iter=1000)
     print("about to fit logreg model")
     logreg.fit(train_matrix, train_data_scores)
     print("finished training")
     
     # testing on training data to check for accuracy
-    tfidf_transformer, test_matrix = features_matrix(test_data_essays, vocabulary, bigram_vocabulary, tfidf_transformer)
+    tfidf_transformer, test_matrix = features_matrix(test_data_essays, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer)
     print("about to predict")
     predictions = logreg.predict(test_matrix)
     log_accuracy(predictions, test_data_scores)
