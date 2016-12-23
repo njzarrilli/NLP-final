@@ -241,11 +241,11 @@ def bag_of_pos(tagged, num_tags, tags):
         tag = tag_list[k]
         tag_index_dict[tag] = k
 
-    for i in range(len(data)):
-        for word in data[i]:
+    for i in range(len(tagged)):
+        for word in tagged[i]:
             try:
                 index = tag_index_dict[word[1]]
-                table[o][index] += 1
+                table[i][index] += 1
             except KeyError:
                 pass
     return table
@@ -363,21 +363,25 @@ def essay_sizes(data):
 # def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
 def features_matrix(data, data_tagged, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer=None):
    
-    #BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
-    #print("bow found")
+    # BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
+    # print("bow found")
     BOB_matrix = bag_of_bigrams(data, len(bigram_vocabulary), bigram_vocabulary)
     print("bob found")
-    #bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)  
-    #print("concat")
+    # bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)  
+    # bag_matrix  = BOB_matrix
+    # print("concat")
     NE_matrix = bag_of_NE(data)
     print("ne found")
-    combined_matrix = np.concatenate((BOB_matrix, NE_matrix), axis=1)
-    print('concat 1')
-
-    # POS_matrix = bag_of_pos(data_tagged, len(tag_list), tag_list)
-    # print("POS found")
-    # combined_matrix = np.concatenate((combined_matrix, POS_matrix), axis=1)
+    # combined_matrix = np.concatenate((BOB_matrix, NE_matrix), axis=1)
     # print('concat 2')
+
+    POS_matrix = bag_of_pos(data_tagged, len(tag_list), tag_list)
+    # import pdb; pdb.set_trace();
+    print("POS found")
+    # combined_matrix = np.concatenate((combined_matrix, POS_matrix), axis=1)
+    combined_matrix = np.concatenate((BOB_matrix, NE_matrix, POS_matrix), axis=1)
+
+    print('concat 3')
     
     if not tfidf_transformer:
         tfidf_transformer = TfidfTransformer().fit(combined_matrix)
