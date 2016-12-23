@@ -23,143 +23,6 @@ entities = {"organization": '<ORG>', 'location' : '<LOC>', 'caps':'<CAPS>',
             'month': '<MONTH>', 'date': '<DATE>', 'money': '<MONEY>' }
 
 UNKNOWN_TOKEN = "<UNK>"
-# ORGANIZATION
-# LOCATION
-# CAPS
-# NUM
-# PERCENT
-# PERSON
-# MONTH
-# DATE
-# MONEY
-
-def train_model(training_data, training_results):
-    pass
-
-def detect_unknowns(data, word_counts):
-    data_with_unknowns = []
-
-    for essay in data:
-        new_essay = []
-        for word in essay:
-            if word_counts[word] <= 1:
-                new_essay.append(UNKNOWN_TOKEN)
-            else:
-                new_essay.append(word)
-        data_with_unknowns.append(new_essay)
-    
-    return data_with_unknowns
-
-def NER(essay):
-    to_remove = []
-
-    for i in range(len(essay)):
-        try:
-            if essay[i] == "@":
-                entity = re.sub("\d+", "", essay[i+1])
-                # print essay[i], essay[i+1], entity
-                essay[i] = entities[entity]
-                to_remove.append(essay[i+1])
-        except KeyError:
-            pass
-    for i in to_remove:
-        essay.remove(i)
-    return essay
-            
-
-def letter_grade(essay_set, essay_score):
-    essay_score_int = int(essay_score)
-
-    if essay_set == '1':
-        if essay_score == '5' or essay_score == '6':
-            return 'A'
-        elif essay_score == '4':
-            return 'B'
-        elif essay_score == '3':
-            return 'C'
-        elif essay_score == '2':
-            return 'D'
-        else:
-            return 'F'
-    # might not be out of 4 might be 3
-    elif essay_set == '3' or essay_set == '4':
-        if essay_score == '3':
-            return 'A'
-        elif essay_score == '2':
-            return 'B'
-        elif essay_score == '1':
-            return 'D'
-        else:
-            return 'F'
-    elif essay_set == '5' or essay_set == '6':
-        if essay_score == '4':
-            return 'A'
-        elif essay_score == '3':
-            return 'B'
-        elif essay_score == '2':
-            return 'C'
-        elif essay_score == '1':
-            return 'D'
-        else:
-            return 'F'
-    elif essay_set == '7':
-        if essay_score_int >= 24:
-            return 'A'
-        elif essay_score_int >= 18:
-            return 'B'
-        elif essay_score_int >= 12:
-            return 'D'
-        else:
-            return 'F'
-    elif essay_set == '8':
-        if essay_score_int >= 50:
-            return 'A'
-        elif essay_score_int >= 40:
-            return 'B'
-        elif essay_score_int >= 30:
-            return 'C'
-        elif essay_score_int >= 20:
-            return 'D'
-        else:
-            return 'F'
-
-def get_training_data(lines):
-    train_data_lines = []
-    train_result_lines = []
-    gradeCounts = defaultdict(int)
-    word_counts = defaultdict(int)
-    lines = lines[1:]
-    random.shuffle(lines)
-
-    for line in lines:
-
-        line_data = re.split(r'\t+', line)
-        line_data[2] = line_data[2].decode('unicode_escape').encode('ascii','ignore')
-        
-        essay = line_data[2].encode('utf-8')
-        #essay = essay.translate(None, string.punctuation)
-        essay = essay.lower()
-        essay = word_tokenize(essay)
-        essay = NER(essay)
-        essay_score = line_data[5]
-        #essay = essay.split()
-
-        essay_set = line_data[1].encode('utf-8')
-        
-        if essay_set != '2':
-            normalized_score = int(float(essay_score) / rubric[essay_set] * 100)
-            grade = letter_grade(essay_set, essay_score)
-            for word in essay:
-                word_counts[word] += 1
-
-            train_data_lines.append(essay)
-            train_result_lines.append(grade)
-            
-            gradeCounts[grade] += 1
-
-    train_data_lines = detect_unknowns(train_data_lines, word_counts)
-
-    return (train_data_lines, train_result_lines, gradeCounts)
 
 def get_test_data(lines):
     test_data_lines = []
@@ -202,23 +65,6 @@ def bag_of_words(data, vocab_size, vocabulary):
                 pass
     return table
 
-def bag_of_NE(data):
-    table = np.zeros((len(data), len(entities)))
-    entities_index_dict = dict()
-    k=0
-    for entity in entities:
-        entities_index_dict[k] = entity
-        k += 1
-
-    for i in range(len(data)):
-        for word in data[i]:
-            try:
-                index = entities_index_dict[word.lower()]
-                table[i][index] += 1
-            except KeyError:
-                pass
-    return table
-
 def get_bigram_vocab(data):
     bigram_vocab = set()
 
@@ -229,26 +75,6 @@ def get_bigram_vocab(data):
 
     return bigram_vocab
 
-def bag_of_bigrams(data, bigram_vocab_size, bigram_vocabulary):
-    table = np.zeros((len(data), bigram_vocab_size))
-    bigram_list = list(bigram_vocabulary)
-    bigram_index_dict = dict()
-    
-    for k in range(len(bigram_list)):
-        bigram = bigram_list[k]
-        bigram_index_dict[bigram] = k
-
-    for i in range(len(data)):
-        essay = data[i]
-        for j in range(1,len(essay)):
-            try:
-                bigram = (essay[j-1].lower(), essay[j].lower())
-                index = bigram_index_dict[bigram]
-                table[i][index] += 1
-            except KeyError:
-                pass
-    
-    return table
 
 def log_accuracy(predictions, grades):
     grade_accuracies = defaultdict(lambda: [0.0, 0.0])
@@ -275,35 +101,26 @@ def log_accuracy(predictions, grades):
     f.close()
     print gradeCounts
 
-def features_matrix(data, vocabulary, bigram_vocabulary):
-    
-    BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
-    print("bow found")
-    #BOB_matrix = bag_of_bigrams(train_data_essays, len(bigram_vocabulary), bigram_vocabulary)
-    #print("bob found")
-    #bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)  
-    #print("concat")
-    NE_matrix = bag_of_NE(data)
-    print("ne found")
-    combined_matrix = np.concatenate((BOW_matrix, NE_matrix), axis=1)
-    print('concat 2')
-    if not tfidf_transformer:
-        tfidf_transformer = TfidfTransformer().fit(combined_matrix)
-        print("tfidf found")
-    X_train_tf = tfidf_transformer.transform(combined_matrix)
-    #cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
-    #print("cos found")
-    return (tfidf_transformer, X_train_tf)
-
 def main():
 
-    f = open("training_set_rel3.tsv")
+    f = open("essays_randomized.txt")
     lines = list(f)
-    essays, scores, train_score_dict = get_training_data(lines)
-    train_data_essays, train_data_scores = essays[:10178], scores[:10178]
-    test_data_essays, test_data_scores = essays[10178:], scores[10178:]
-    print train_data_essays[0]
-    print train_score_dict
+    print("hi")
+    essays_tokenize = [word_tokenize(essay) for essay in lines]
+    f.close()
+    print("hi")
+    
+    f = open("scores_randomized.txt")
+    scores = list(f)
+    f.close()
+
+    # pos_file = open("essays_tagged_randomized.txt")
+    # pos_lines = list(pos_file)
+    # pos_file.close()
+    print len(essays_tokenize), len(scores)
+    
+    train_data_essays, train_data_scores = essays_tokenize[:10178], scores[:10178]
+    test_data_essays, test_data_scores = essays_tokenize[10178:], scores[10178:]
     
     
     # training

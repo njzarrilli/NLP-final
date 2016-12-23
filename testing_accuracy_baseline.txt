@@ -1,1008 +1,3013 @@
-Got: D    Expected: F
-Got: A    Expected: A
-Got: A    Expected: A
-Got: C    Expected: B
-Got: C    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: D
-Got: C    Expected: C
-Got: D    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: C    Expected: D
-Got: A    Expected: C
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: A
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: A
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: C
-Got: A    Expected: C
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: D
-Got: A    Expected: B
-Got: C    Expected: C
-Got: A    Expected: A
-Got: A    Expected: A
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: A
-Got: A    Expected: C
-Got: C    Expected: A
-Got: A    Expected: C
-Got: A    Expected: B
-Got: D    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: C    Expected: C
-Got: D    Expected: D
-Got: D    Expected: B
-Got: A    Expected: B
-Got: D    Expected: B
-Got: B    Expected: D
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: A
-Got: A    Expected: D
-Got: D    Expected: D
-Got: C    Expected: D
-Got: A    Expected: A
-Got: D    Expected: A
-Got: D    Expected: D
-Got: F    Expected: F
-Got: C    Expected: D
-Got: D    Expected: B
-Got: A    Expected: C
-Got: D    Expected: D
-Got: C    Expected: C
-Got: C    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: F
-Got: A    Expected: A
-Got: C    Expected: C
-Got: C    Expected: C
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: F
-Got: C    Expected: D
-Got: D    Expected: D
-Got: A    Expected: A
-Got: C    Expected: D
-Got: D    Expected: B
-Got: A    Expected: B
-Got: D    Expected: F
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: D
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: D    Expected: A
-Got: A    Expected: B
-Got: D    Expected: D
-Got: F    Expected: F
-Got: F    Expected: F
-Got: B    Expected: B
-Got: D    Expected: B
-Got: F    Expected: F
-Got: F    Expected: F
-Got: C    Expected: D
-Got: A    Expected: D
-Got: A    Expected: B
-Got: A    Expected: D
-Got: D    Expected: B
-Got: A    Expected: B
-Got: A    Expected: A
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: D
-Got: D    Expected: B
-Got: A    Expected: A
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: B
-Got: D    Expected: A
-Got: D    Expected: A
-Got: C    Expected: C
-Got: B    Expected: D
-Got: C    Expected: A
-Got: A    Expected: C
-Got: C    Expected: D
-Got: A    Expected: C
-Got: A    Expected: A
-Got: F    Expected: F
-Got: C    Expected: C
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: D
-Got: F    Expected: F
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: C
-Got: D    Expected: F
-Got: D    Expected: F
-Got: D    Expected: D
-Got: F    Expected: F
-Got: C    Expected: D
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: C
-Got: F    Expected: F
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: A
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: C
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: B
-Got: F    Expected: D
-Got: D    Expected: B
-Got: F    Expected: A
-Got: D    Expected: B
-Got: D    Expected: D
-Got: D    Expected: F
-Got: B    Expected: A
-Got: A    Expected: C
-Got: D    Expected: B
-Got: D    Expected: F
-Got: A    Expected: D
-Got: A    Expected: A
-Got: A    Expected: A
-Got: C    Expected: C
-Got: D    Expected: D
-Got: D    Expected: B
-Got: D    Expected: D
-Got: A    Expected: A
-Got: A    Expected: C
-Got: A    Expected: B
-Got: A    Expected: D
-Got: F    Expected: F
-Got: D    Expected: F
-Got: A    Expected: C
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: A
-Got: A    Expected: D
-Got: A    Expected: B
-Got: C    Expected: B
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: F
-Got: D    Expected: D
-Got: A    Expected: C
-Got: D    Expected: B
-Got: C    Expected: C
-Got: C    Expected: D
-Got: D    Expected: B
-Got: D    Expected: B
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: F
-Got: A    Expected: D
-Got: D    Expected: B
-Got: A    Expected: C
-Got: A    Expected: A
-Got: D    Expected: B
-Got: A    Expected: C
-Got: F    Expected: D
-Got: D    Expected: F
-Got: A    Expected: D
-Got: A    Expected: D
-Got: D    Expected: D
-Got: F    Expected: F
-Got: C    Expected: D
-Got: D    Expected: D
-Got: D    Expected: B
-Got: B    Expected: A
-Got: B    Expected: F
-Got: A    Expected: A
-Got: A    Expected: B
-Got: C    Expected: C
-Got: F    Expected: F
-Got: F    Expected: F
-Got: D    Expected: F
-Got: C    Expected: C
-Got: F    Expected: D
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: C
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: D
-Got: D    Expected: D
-Got: C    Expected: B
-Got: C    Expected: D
-Got: C    Expected: B
-Got: D    Expected: D
-Got: C    Expected: B
-Got: D    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: D
-Got: A    Expected: A
-Got: A    Expected: A
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: C    Expected: C
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: B
-Got: F    Expected: F
-Got: A    Expected: A
-Got: A    Expected: B
-Got: D    Expected: B
-Got: C    Expected: A
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: D
-Got: D    Expected: F
-Got: C    Expected: C
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: D
-Got: D    Expected: D
-Got: D    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: C    Expected: A
-Got: F    Expected: A
-Got: D    Expected: D
-Got: C    Expected: C
-Got: D    Expected: D
-Got: A    Expected: A
-Got: A    Expected: C
-Got: F    Expected: F
-Got: F    Expected: A
-Got: D    Expected: A
-Got: F    Expected: F
-Got: B    Expected: B
-Got: F    Expected: D
-Got: D    Expected: B
-Got: A    Expected: C
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: D
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: C    Expected: C
-Got: A    Expected: A
-Got: D    Expected: D
-Got: D    Expected: F
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: F    Expected: A
-Got: C    Expected: C
-Got: C    Expected: C
-Got: A    Expected: D
-Got: F    Expected: F
-Got: C    Expected: B
-Got: C    Expected: C
-Got: F    Expected: B
-Got: A    Expected: D
-Got: F    Expected: F
-Got: D    Expected: B
-Got: D    Expected: D
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: C    Expected: C
-Got: D    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: B    Expected: D
-Got: C    Expected: C
-Got: C    Expected: C
-Got: A    Expected: B
-Got: B    Expected: B
-Got: D    Expected: F
-Got: D    Expected: D
-Got: D    Expected: B
-Got: C    Expected: C
-Got: A    Expected: B
-Got: D    Expected: F
-Got: D    Expected: D
-Got: A    Expected: A
-Got: D    Expected: B
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: A    Expected: A
-Got: A    Expected: B
-Got: C    Expected: C
-Got: C    Expected: C
-Got: A    Expected: C
-Got: C    Expected: B
-Got: A    Expected: A
-Got: A    Expected: D
-Got: F    Expected: F
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: C    Expected: D
-Got: F    Expected: A
-Got: F    Expected: F
-Got: C    Expected: C
-Got: A    Expected: A
-Got: D    Expected: B
-Got: C    Expected: C
-Got: C    Expected: C
-Got: F    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: F    Expected: F
-Got: C    Expected: D
-Got: C    Expected: B
-Got: A    Expected: C
-Got: A    Expected: A
-Got: A    Expected: C
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: C
-Got: C    Expected: D
-Got: A    Expected: C
-Got: F    Expected: F
-Got: A    Expected: B
-Got: C    Expected: C
-Got: D    Expected: D
-Got: D    Expected: D
-Got: C    Expected: B
-Got: F    Expected: F
-Got: D    Expected: F
-Got: A    Expected: B
-Got: A    Expected: D
-Got: C    Expected: B
-Got: A    Expected: B
-Got: A    Expected: D
-Got: A    Expected: B
-Got: D    Expected: A
-Got: D    Expected: D
-Got: C    Expected: C
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: D
-Got: A    Expected: A
-Got: B    Expected: D
-Got: A    Expected: D
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: F
-Got: D    Expected: F
-Got: C    Expected: B
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: C
-Got: A    Expected: B
-Got: C    Expected: C
-Got: A    Expected: D
-Got: D    Expected: A
-Got: A    Expected: D
-Got: C    Expected: C
-Got: D    Expected: D
-Got: A    Expected: C
-Got: D    Expected: D
-Got: D    Expected: F
-Got: A    Expected: D
-Got: A    Expected: A
-Got: C    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: C    Expected: B
-Got: A    Expected: B
-Got: C    Expected: B
-Got: A    Expected: A
-Got: A    Expected: C
-Got: A    Expected: B
-Got: A    Expected: C
-Got: D    Expected: F
-Got: C    Expected: C
-Got: A    Expected: A
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: A
-Got: F    Expected: D
-Got: A    Expected: F
-Got: C    Expected: C
-Got: D    Expected: B
-Got: D    Expected: B
-Got: B    Expected: D
-Got: F    Expected: F
-Got: C    Expected: C
-Got: C    Expected: C
-Got: A    Expected: B
-Got: C    Expected: C
-Got: C    Expected: A
-Got: C    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: C
-Got: F    Expected: F
-Got: C    Expected: B
-Got: D    Expected: D
-Got: A    Expected: D
-Got: F    Expected: F
-Got: A    Expected: C
-Got: F    Expected: F
-Got: D    Expected: F
-Got: C    Expected: C
-Got: A    Expected: A
-Got: C    Expected: C
-Got: F    Expected: F
-Got: A    Expected: D
-Got: A    Expected: C
-Got: B    Expected: D
-Got: A    Expected: B
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: C    Expected: C
-Got: C    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: F
-Got: A    Expected: B
-Got: B    Expected: C
-Got: A    Expected: C
-Got: A    Expected: A
-Got: A    Expected: D
-Got: F    Expected: F
-Got: A    Expected: A
-Got: A    Expected: D
-Got: C    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: D    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: B
-Got: D    Expected: B
-Got: F    Expected: F
-Got: B    Expected: C
-Got: F    Expected: F
-Got: C    Expected: B
-Got: C    Expected: A
-Got: A    Expected: C
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: F
-Got: A    Expected: B
-Got: C    Expected: C
-Got: D    Expected: D
-Got: D    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: C
-Got: C    Expected: C
-Got: D    Expected: B
-Got: A    Expected: D
-Got: A    Expected: B
-Got: A    Expected: A
-Got: A    Expected: B
-Got: B    Expected: D
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: F
-Got: A    Expected: B
-Got: D    Expected: D
-Got: C    Expected: A
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: F
-Got: A    Expected: C
-Got: A    Expected: A
-Got: D    Expected: F
-Got: F    Expected: F
-Got: D    Expected: F
-Got: D    Expected: B
-Got: A    Expected: F
-Got: D    Expected: B
-Got: D    Expected: B
-Got: D    Expected: D
-Got: D    Expected: D
-Got: D    Expected: C
-Got: A    Expected: C
-Got: F    Expected: F
-Got: C    Expected: B
-Got: C    Expected: D
-Got: F    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: C    Expected: C
-Got: D    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: A
-Got: A    Expected: D
-Got: C    Expected: C
-Got: D    Expected: B
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: C
-Got: D    Expected: F
-Got: D    Expected: D
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: D
-Got: A    Expected: B
-Got: D    Expected: D
-Got: A    Expected: A
-Got: F    Expected: F
-Got: A    Expected: A
-Got: D    Expected: B
-Got: C    Expected: D
-Got: A    Expected: A
-Got: D    Expected: D
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: D
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: B
-Got: C    Expected: C
-Got: D    Expected: D
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: D
-Got: C    Expected: D
-Got: A    Expected: B
-Got: C    Expected: B
-Got: D    Expected: D
-Got: A    Expected: A
-Got: A    Expected: D
-Got: D    Expected: D
-Got: A    Expected: A
-Got: C    Expected: B
-Got: A    Expected: D
-Got: A    Expected: B
-Got: F    Expected: F
-Got: B    Expected: D
-Got: A    Expected: A
-Got: A    Expected: D
-Got: D    Expected: D
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: A
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: D
-Got: D    Expected: D
-Got: D    Expected: F
-Got: F    Expected: D
-Got: D    Expected: D
-Got: C    Expected: A
-Got: B    Expected: D
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: C
-Got: D    Expected: B
-Got: F    Expected: F
-Got: D    Expected: F
-Got: D    Expected: D
-Got: A    Expected: A
-Got: D    Expected: D
-Got: D    Expected: B
-Got: C    Expected: C
-Got: F    Expected: F
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: A
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: A
-Got: F    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: D    Expected: B
-Got: C    Expected: C
-Got: F    Expected: F
-Got: C    Expected: B
-Got: A    Expected: A
-Got: A    Expected: B
-Got: C    Expected: A
-Got: D    Expected: D
-Got: F    Expected: F
-Got: C    Expected: D
-Got: D    Expected: D
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: D    Expected: F
-Got: A    Expected: A
-Got: F    Expected: B
-Got: D    Expected: B
-Got: B    Expected: F
-Got: A    Expected: D
-Got: D    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: C
-Got: F    Expected: F
-Got: D    Expected: A
-Got: D    Expected: D
-Got: A    Expected: A
-Got: D    Expected: D
-Got: D    Expected: D
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: B
-Got: A    Expected: D
-Got: F    Expected: F
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: A
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: A
-Got: C    Expected: C
-Got: C    Expected: B
-Got: D    Expected: F
-Got: F    Expected: F
-Got: F    Expected: F
-Got: C    Expected: B
-Got: D    Expected: B
-Got: A    Expected: D
-Got: F    Expected: F
-Got: D    Expected: F
-Got: A    Expected: C
-Got: D    Expected: D
-Got: C    Expected: B
-Got: A    Expected: B
-Got: A    Expected: C
-Got: D    Expected: D
-Got: A    Expected: B
-Got: C    Expected: D
-Got: D    Expected: D
-Got: D    Expected: D
-Got: A    Expected: B
-Got: D    Expected: B
-Got: D    Expected: F
-Got: A    Expected: C
-Got: A    Expected: B
-Got: F    Expected: F
-Got: C    Expected: B
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: C
-Got: A    Expected: C
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: D
-Got: F    Expected: D
-Got: A    Expected: A
-Got: A    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: C
-Got: F    Expected: F
-Got: C    Expected: C
-Got: C    Expected: D
-Got: A    Expected: C
-Got: A    Expected: D
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: A
-Got: C    Expected: C
-Got: B    Expected: D
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: B
-Got: C    Expected: A
-Got: D    Expected: B
-Got: A    Expected: D
-Got: C    Expected: C
-Got: D    Expected: D
-Got: C    Expected: F
-Got: D    Expected: F
-Got: A    Expected: D
-Got: A    Expected: C
-Got: F    Expected: F
-Got: C    Expected: C
-Got: D    Expected: D
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: C
-Got: A    Expected: B
-Got: C    Expected: D
-Got: D    Expected: F
-Got: F    Expected: A
-Got: D    Expected: D
-Got: C    Expected: F
-Got: C    Expected: C
-Got: A    Expected: C
-Got: D    Expected: D
-Got: D    Expected: D
-Got: A    Expected: A
-Got: A    Expected: A
-Got: A    Expected: A
-Got: D    Expected: B
-Got: B    Expected: C
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: F
-Got: A    Expected: A
-Got: F    Expected: F
-Got: D    Expected: A
-Got: A    Expected: A
-Got: D    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: D    Expected: B
-Got: C    Expected: C
-Got: A    Expected: A
-Got: A    Expected: B
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: D
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: F
-Got: D    Expected: B
-Got: D    Expected: D
-Got: B    Expected: B
-Got: D    Expected: B
-Got: D    Expected: B
-Got: A    Expected: B
-Got: A    Expected: C
-Got: F    Expected: F
-Got: A    Expected: C
-Got: D    Expected: B
-Got: C    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: D    Expected: B
-Got: C    Expected: C
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: D
-Got: D    Expected: B
-Got: C    Expected: C
-Got: D    Expected: F
-Got: C    Expected: C
-Got: D    Expected: B
-Got: A    Expected: B
-Got: C    Expected: B
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: A
-Got: D    Expected: F
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: A    Expected: D
-Got: A    Expected: D
-Got: D    Expected: D
-Got: C    Expected: C
-Got: A    Expected: C
-Got: D    Expected: D
-Got: F    Expected: D
-Got: A    Expected: A
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: B
-Got: A    Expected: A
-Got: C    Expected: C
-Got: D    Expected: F
-Got: A    Expected: A
-Got: A    Expected: B
-Got: C    Expected: A
-Got: F    Expected: F
-Got: C    Expected: C
-Got: D    Expected: F
-Got: D    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: C    Expected: C
-Got: A    Expected: B
-Got: D    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: D    Expected: D
-Got: F    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: A    Expected: C
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: C
-Got: A    Expected: A
-Got: D    Expected: B
-Got: C    Expected: D
-Got: A    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: C    Expected: A
-Got: A    Expected: F
-Got: D    Expected: A
-Got: C    Expected: C
-Got: A    Expected: B
-Got: D    Expected: B
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: A
-Got: C    Expected: B
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: D
-Got: D    Expected: D
-Got: A    Expected: B
-Got: A    Expected: A
-Got: C    Expected: A
-Got: F    Expected: A
-Got: F    Expected: C
-Got: C    Expected: B
-Got: D    Expected: D
-Got: A    Expected: C
-Got: D    Expected: A
-Got: C    Expected: F
-Got: C    Expected: C
-Got: D    Expected: B
-Got: D    Expected: D
-Got: D    Expected: B
-Got: A    Expected: B
-Got: F    Expected: F
-Got: B    Expected: B
-Got: A    Expected: D
-Got: C    Expected: B
-Got: A    Expected: B
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: F    Expected: F
-Got: D    Expected: D
-Got: C    Expected: A
-Got: F    Expected: F
-Got: C    Expected: D
-Got: D    Expected: D
-Got: A    Expected: C
-Got: D    Expected: B
-Got: F    Expected: F
-Got: A    Expected: B
-Got: A    Expected: A
-Got: F    Expected: D
-Got: A    Expected: C
-Got: D    Expected: D
-Got: A    Expected: D
-Got: A    Expected: A
-Got: D    Expected: D
-Got: A    Expected: C
-Got: F    Expected: F
-Got: D    Expected: D
-Got: D    Expected: D
-Got: D    Expected: D
-Got: D    Expected: D
-Got: C    Expected: A
-Got: A    Expected: A
-Got: C    Expected: D
-Got: F    Expected: F
-Got: A    Expected: B
-Got: F    Expected: F
-Got: F    Expected: F
-Got: A    Expected: C
-Got: A    Expected: A
-Got: D    Expected: F
-Got: C    Expected: C
-Got: A    Expected: B
-Got: A    Expected: B
-Got: D    Expected: A
-Got: C    Expected: C
-Got: D    Expected: B
-Accuracy: 45.4 
+Got: A
+    Expected: A
 
-For A correctly predicted 91.0 essay grades out of 130.0
-For C correctly predicted 71.0 essay grades out of 136.0
-For B correctly predicted 5.0 essay grades out of 293.0
-For D correctly predicted 131.0 essay grades out of 224.0
-For F correctly predicted 156.0 essay grades out of 217.0
+Got: D
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: B
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: C
+    Expected: B
+
+Got: B
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: B
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: B
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: B
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: B
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: B
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: B
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: B
+    Expected: D
+
+Got: B
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: B
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: C
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: B
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: F
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: B
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: F
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: C
+    Expected: D
+
+Got: C
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: B
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: B
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: C
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: B
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: B
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: A
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: B
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: F
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: C
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: B
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: D
+
+Got: C
+    Expected: B
+
+Got: F
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: D
+
+Got: A
+    Expected: C
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: F
+    Expected: F
+
+Got: A
+    Expected: B
+
+Got: A
+    Expected: C
+
+Got: D
+    Expected: B
+
+Got: C
+    Expected: C
+
+Got: A
+    Expected: A
+
+Got: A
+    Expected: D
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: A
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: D
+
+Got: D
+    Expected: B
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: C
+    Expected: A
+
+Got: A
+    Expected: B
+
+Got: C
+    Expected: B
+
+Got: A
+    Expected: F
+
+Got: F
+    Expected: F
+
+Got: D
+    Expected: A
+
+Got: C
+    Expected: B
+
+Got: D
+    Expected: D
+
+Got: C
+    Expected: D
+
+Accuracy: 45.9 
+
+For C
+ correctly predicted 60.0 essay grades out of 121.0
+For F
+ correctly predicted 138.0 essay grades out of 196.0
+For A
+ correctly predicted 98.0 essay grades out of 135.0
+For D
+ correctly predicted 155.0 essay grades out of 225.0
+For B
+ correctly predicted 8.0 essay grades out of 323.0
 

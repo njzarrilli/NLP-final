@@ -12,13 +12,26 @@ from nltk.tag.stanford import StanfordPOSTagger
 from nltk.internals import find_jars_within_path
 from nltk import word_tokenize
 import random
-import ast
+#jar = '/Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar'
+#model = 'Users/njzarrilli/GitHub/NLP-final/stanford-postagger-2015-12-09/models/english-bidirectional-distsim.tagger'
+#tagger = StanfordPOSTagger(model, jar)
+
 
 rubric = { '1': 12, '3': 3, '4': 3, '5': 4, '6':4, '7': 30, '8':60 }
 entities = {"organization": '<ORG>', 'location' : '<LOC>', 'caps':'<CAPS>', 
             'num': '<NUM>', 'percent': '<PERCENT>', 'person': '<PERS>', 
             'month': '<MONTH>', 'date': '<DATE>', 'money': '<MONEY>' }
+
 UNKNOWN_TOKEN = "<UNK>"
+# ORGANIZATION
+# LOCATION
+# CAPS
+# NUM
+# PERCENT
+# PERSON
+# MONTH
+# DATE
+# MONEY
 
 def train_model(training_data, training_results):
     pass
@@ -52,6 +65,103 @@ def NER(essay):
     for i in to_remove:
         essay.remove(i)
     return essay
+            
+
+def letter_grade(essay_set, essay_score):
+    essay_score_int = int(essay_score)
+
+    if essay_set == '1':
+        if essay_score_int >= 10:
+            return 'A'
+        elif essay_score_int >= 8:
+            return 'B'
+        elif essay_score_int == 7:
+            return 'D'
+        #elif essay_score_int == 6:
+        #    return 'D'
+        else:
+            print(essay_score_int)
+            return 'F'
+    elif essay_set == '3' or essay_set == '4':
+        if essay_score == '3':
+            return 'A'
+        elif essay_score == '2':
+            return 'B'
+        elif essay_score == '1':
+            return 'D'
+        else:
+            return 'F'
+    elif essay_set == '5' or essay_set == '6':
+        if essay_score == '4':
+            return 'A'
+        elif essay_score == '3':
+            return 'B'
+        elif essay_score == '2':
+            return 'C'
+        elif essay_score == '1':
+            return 'D'
+        else:
+            return 'F'
+    elif essay_set == '7':
+        if essay_score_int >= 24:
+            return 'A'
+        elif essay_score_int >= 18:
+            return 'B'
+        elif essay_score_int >= 12:
+            return 'D'
+        else:
+            return 'F'
+    elif essay_set == '8':
+        if essay_score_int >= 50:
+            return 'A'
+        elif essay_score_int >= 40:
+            return 'B'
+        elif essay_score_int >= 30:
+            return 'C'
+        elif essay_score_int >= 20:
+            return 'D'
+        else:
+            return 'F'
+
+def get_training_data(lines):
+    train_data_lines = []
+    train_result_lines = []
+    gradeCounts = defaultdict(int)
+    word_counts = defaultdict(int)
+    lines = lines[1:]
+    random.shuffle(lines)
+
+    for line in lines:
+
+        line_data = re.split(r'\t+', line)
+        line_data[2] = line_data[2].decode('unicode_escape').encode('ascii','ignore')
+        
+        essay = line_data[2].encode('utf-8')
+        #essay = essay.translate(None, string.punctuation)
+        essay = essay.lower()
+        essay = word_tokenize(essay)
+        essay = NER(essay)
+        essay_score = line_data[5]
+        #essay = essay.split()
+
+        essay_set = line_data[1].encode('utf-8')
+        
+        if essay_set != '2':
+            normalized_score = int(float(essay_score) / rubric[essay_set] * 100)
+            grade = letter_grade(essay_set, essay_score)
+            for word in essay:
+                word_counts[word] += 1
+
+            train_data_lines.append(essay)
+            train_result_lines.append(grade)
+            
+            gradeCounts[grade] += 1
+
+    train_data_lines = detect_unknowns(train_data_lines, word_counts)
+    total_size = len(train_data_lines) + len(train_result_lines)
+    print("!!!!")
+    print(total_size)
+    return (train_data_lines, train_result_lines, gradeCounts)
 
 def get_test_data(lines):
     test_data_lines = []
@@ -94,24 +204,6 @@ def bag_of_words(data, vocab_size, vocabulary):
                 pass
     return table
 
-def bag_of_pos(tagged, num_tags, tags):
-    table = np.zeros((len(tagged), num_tags))
-    tag_list = list(tags)
-    tag_index_dict = dict()
-
-    for k in range(len(tag_list)):
-        tag = tag_list[k]
-        tag_index_dict[tag] = k
-
-    for i in range(len(tagged)):
-        for word in tagged[i]:
-            try:
-                index = tag_index_dict[word[1]]
-                table[i][index] += 1
-            except KeyError:
-                pass
-    return table
-
 def bag_of_NE(data):
     table = np.zeros((len(data), len(entities)))
     entities_index_dict = dict()
@@ -139,17 +231,6 @@ def get_bigram_vocab(data):
 
     return bigram_vocab
 
-def get_tag_list(tagged):
-    tag_list = set()
-
-    for essay in tagged:
-        essay = ast.literal_eval(essay)
-        for word in essay:
-            print word
-            tag_list.add(word[1])
-
-    return tag_list
-
 def bag_of_bigrams(data, bigram_vocab_size, bigram_vocabulary):
     table = np.zeros((len(data), bigram_vocab_size))
     bigram_list = list(bigram_vocabulary)
@@ -175,7 +256,7 @@ def log_accuracy(predictions, grades):
     grade_accuracies = defaultdict(lambda: [0.0, 0.0])
     total = 0
     correct_predictions = 0
-    f = open("testing_accuracy_POS.txt", "w+")
+    f = open("testing_accuracy_grades_curr3.txt", "w+")
     
     gradeCounts = defaultdict(int)
     for predicted_grade, correct_grade in zip(predictions, grades):
@@ -191,11 +272,10 @@ def log_accuracy(predictions, grades):
     print("Accuracy: %s \n\n" % str(accuracy))
     f.write("Accuracy: %s \n\n" % str(accuracy))
     for grade in grade_accuracies:
-        percent_acc = grade_accuracies[grade][0]/grade_accuracies[grade][1] * 100
-        f.write("For %s correctly predicted %s essay grades out of %s. Accuracy is %s\n" % (grade, grade_accuracies[grade][0], grade_accuracies[grade][1], percent_acc))
+        f.write("For %s correctly predicted %s essay grades out of %s\n" % (grade, grade_accuracies[grade][0], grade_accuracies[grade][1]))
     f.write("\n")
     f.close()
-    print gradeCounts
+    print(gradeCounts)
 
 def cosine_similarities(data_matrix, compare_matrix):
     cosine_sim_matrix = cosine_similarity(data_matrix, compare_matrix)
@@ -213,63 +293,81 @@ def get_pos_tags():
         tags.append(line_data[0])
     return tags 
 
-# def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
-def features_matrix(data, data_tagged, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer=None):
-   
-    #BOB_matrix = bag_of_bigrams(data, len(bigram_vocabulary), bigram_vocabulary)
-    #print("bob found")
-    #NE_matrix = bag_of_NE(data)
-    #print("ne found")
-    POS_matrix = bag_of_pos(data_tagged, len(tag_list), tag_list)
-    print("POS found")
-    #combined_matrix = np.concatenate((BOW_matrix, NE_matrix, POS_matrix), axis=1)
-    print('concat 3')
+def POS_tag_feature(text):
+    return tagger.tag(text.split())
+
+def POS_chunk_feature(text):
+    pos_window = []
+    for word in range(2, len(text[2:])):
+        chunk = {}
+        chunk['word-2'] = text[word - 2][0]
+        chunk['pos-2']  = text[word-2][1]
+        chunk['word-1']  = text[word-1][0]
+        chunk['pos-1']  = text[word-1][1]
+        chunk['word+1']  = text[word+1][0]
+        chunk['pos+1']  = text[word+1][1]
+        chunk['word+2']  = text[word+2][0]
+        chunk['pos+2']  = text[word+2][1]
+
+        pos_window.append(chunk)
+
+    return pos_window
+
+def essay_sizes(data):
+    essay_lengths = []
+
+    for essay in data:
+        essay_lengths.append(len(essay))
+
+    essay_lengths = np.reshape(essay_lengths, (len(data),1))
+    return essay_lengths
+
+def features_matrix(data, vocabulary, bigram_vocabulary, tfidf_transformer=None):
+    
+    #BOW_matrix = bag_of_words(data, len(vocabulary), vocabulary)
+    #print("bow found")
+    BOB_matrix = bag_of_bigrams(data, len(bigram_vocabulary), bigram_vocabulary)
+    print("bob found")
+    #bags_matrix = np.concatenate((BOW_matrix, BOB_matrix), axis=1)  
+    #print("concat")
+    NE_matrix = bag_of_NE(data)
+    print("ne found")
+    combined_matrix = np.concatenate((BOB_matrix, NE_matrix), axis=1)
+    print('concat 2')
     if not tfidf_transformer:
-        tfidf_transformer = TfidfTransformer().fit(POS_matrix)
+        tfidf_transformer = TfidfTransformer().fit(combined_matrix)
         print("tfidf found")
-    X_train_tf = tfidf_transformer.transform(POS_matrix)
+    X_train_tf = tfidf_transformer.transform(combined_matrix)
+    #essay_lengths = essay_sizes(data)
+    #import pdb; pdb.set_trace()
+    #final_matrix = np.concatenate((X_train_tf, essay_lengths), axis=1)
+    #cos_sim_matrix = cosine_similarities(combined_matrix, combined_matrix)
+    #print("cos found")
     return (tfidf_transformer, X_train_tf)
 
 def main():
 
-    f = open("essays_randomized.txt")
+    f = open("training_set_rel3.tsv")
     lines = list(f)
-    essays_tokenize = [] 
-    for essay in lines:
-        essays_tokenize.append( ast.literal_eval(essay) )
-    f.close()
+    essays, scores, train_score_dict = get_training_data(lines)
+    train_data_essays, train_data_scores = essays[:10178], scores[:10178]
+    test_data_essays, test_data_scores = essays[10178:], scores[10178:]
+    print(train_data_essays[0])
+    print(train_score_dict)
     
-    f = open("scores_randomized.txt")
-    scores = list(f)
-    scores = [s.strip('\n') for s in scores]
-    f.close()
-
-    pos_file = open("essays_tagged_randomized.txt")
-    pos_lines = list(pos_file)
-    essays_tagged = []
-    for essay in pos_lines:
-        essays_tagged.append(eval(essay))
-    pos_file.close()
     
-    print len(essays_tokenize), len(scores), len(essays_tagged)
-    print essays_tokenize[1], essays_tagged[1]
-
-    train_data_essays, train_data_scores, train_data_tagged = essays_tokenize[:10178], scores[:10178], essays_tagged[:10178]
-    test_data_essays, test_data_scores, test_data_tagged = essays_tokenize[10178:], scores[10178:], essays_tagged[10178:]
-    
-    tag_list = get_pos_tags()
     # training
     vocabulary = get_vocabulary(train_data_essays)
     print("vocab found")
     bigram_vocabulary = get_bigram_vocab(train_data_essays)
-    tfidf_transformer, train_matrix = features_matrix(train_data_essays, train_data_tagged, vocabulary, bigram_vocabulary, tag_list)
+    tfidf_transformer, train_matrix = features_matrix(train_data_essays, vocabulary, bigram_vocabulary)
     logreg = linear_model.LogisticRegression(max_iter=1000)
     print("about to fit logreg model")
     logreg.fit(train_matrix, train_data_scores)
     print("finished training")
     
     # testing on training data to check for accuracy
-    tfidf_transformer, test_matrix = features_matrix(test_data_essays, test_data_tagged, vocabulary, bigram_vocabulary, tag_list, tfidf_transformer)
+    tfidf_transformer, test_matrix = features_matrix(test_data_essays, vocabulary, bigram_vocabulary, tfidf_transformer)
     print("about to predict")
     predictions = logreg.predict(test_matrix)
     log_accuracy(predictions, test_data_scores)
